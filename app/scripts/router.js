@@ -6,6 +6,9 @@ import renderLogin from './views/renderLogin';
 // import CollectionName from './collections/name';
 
 // import ModelName from './models/name';
+import User from './models/User';
+
+let user = new User();
 
 const Router = Backbone.Router.extend({
   routes: {
@@ -14,7 +17,7 @@ const Router = Backbone.Router.extend({
   },
   home() {
     console.log('hello mother');
-    renderLogin();
+    renderLogin(user);
   },
   rolodex() {
     console.log('hello father');

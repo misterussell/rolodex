@@ -1,12 +1,10 @@
 import $ from 'jquery';
 
-import User from '../models/User';
-
 const contentBox = $('.main-content');
 
-let user = new User();
+export default function(user) {
 
-export default function() {
+  let newUser = true;
 
   let toggle = $(`
     <div class="toggle">
@@ -20,7 +18,7 @@ export default function() {
 
   let form = $(`
     <form class="login-signup">
-      <input type="text" class="name" placeholder="Name" value="">
+      <input type="text" class="name" name="name" placeholder="Name" value="">
       <input type="text" name="email" placeholder="Email" value="">
       <input type="text" name="password" placeholder="Password" value="">
       <input type="submit" name="submit" value="Log In">
@@ -28,18 +26,25 @@ export default function() {
 
   login.on('click', () => {
     $('.name').hide();
+    newUser = false;
   });
 
   signUp.on('click', () => {
     $('.name').show();
+    newUser = true;
   });
 
   form.on('submit', (e) => {
     e.preventDefault();
     let email = $(form).find('input[name="email"]').val();
     let password = $(form).find('input[name="password"]').val();
-    user.register(email, password);
-    console.log('Form submit');
+    let name = $(form).find('input[name="name"]').val();
+    if (newUser){
+      user.register(email, password, name);
+      console.log('Form submit');
+    } else {
+      user.login(email, password);
+    }
   });
 
   return contentBox.append(toggle, form);
