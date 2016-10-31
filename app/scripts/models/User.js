@@ -47,5 +47,22 @@ export default Backbone.Model.extend({
 			    // session.id = response.objectId;
         }
     });
+  },
+  addContact() {
+    this.save(
+      {model},
+      {
+        url: 'https://api.backendless.com/v1/data/Contacts',
+        headers: {
+          'application-id': '8505A74A-DFDD-266F-FFF8-BDDCEC76D400',
+          'secret-key': 'DC3DD00B-0B43-38E7-FFEB-9BD4E0B64700',
+          'application-type': 'REST',
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+  },
+  removeContact() {
+
   }
 });
