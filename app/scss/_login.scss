@@ -1,0 +1,42 @@
+.toggle {
+  h1 {
+    display: inline-block;
+    padding: .5em 1em;
+  }
+
+  .login {
+    background: $color-primary-2;
+    color: $color-secondary-2-4;
+  }
+
+  .signUp {
+    background: $color-secondary-1-2;
+    color: $color-secondary-2-4;
+  }
+
+  .login-signup {
+    margin: 0 auto;
+    text-align: center;
+    width: 15%;
+    //font styling
+    font-size: 1em;
+
+    input {
+      display: block;
+      margin: .25em;
+      padding: .25em;
+      width: 100%;
+
+    }
+    .button-toggle {
+      width: 100%;
+      display: inline-block;
+      .submit {
+        width: 100%;
+        border: none;
+
+      }
+    }
+
+  }
+}

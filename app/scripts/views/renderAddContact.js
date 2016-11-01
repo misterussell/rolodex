@@ -1,8 +1,8 @@
 import $ from 'jquery';
 
-const contentBox = $('.main-content');
+import config from '../config';
 
-export default function(user) {
+export default function(contacts, session) {
 
   const form = $(`
     <form class="" action="index.html" method="post">
@@ -24,12 +24,32 @@ export default function(user) {
     let email = $(form).find('input[name="email"]').val();
     let phoneNumber = $(form).find('input[name="telephone"]').val();
     let address = $(form).find('input[name="address"]').val();
-    //need to pass in an owner ID
+    let Owner = session.get('ownerId');
 
-    user.addContact(firstName, lastName, nickName, email, phoneNumber, address);
-
+    contacts.create(
+      {
+        firstName,
+        lastName,
+        nickName,
+        email,
+        phoneNumber,
+        address,
+      },
+      {
+        headers: {
+          'application-id': config.appId,
+          'secret-key': config.secret,
+          'application-type': 'REST',
+          'Content-Type': 'application/json',
+          'user-token': session.get('user-token')
+        },
+        success() {
+          alert('congrats. contact added!');
+        }
+      }
+    );
   });
 
-  return contentBox.append(form);
+  return form;
 
 }

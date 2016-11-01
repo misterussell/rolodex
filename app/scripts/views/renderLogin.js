@@ -2,35 +2,40 @@ import $ from 'jquery';
 
 const contentBox = $('.main-content');
 
-export default function(user) {
+export default function(user, session) {
 
+  //variable for sign up toggle
   let newUser = true;
 
-  let toggle = $(`
-    <div class="toggle">
-    </div>
-    `);
+  let toggle = $(`<div class="toggle"></div>`);
+  let buttonToggle = $(`<div="button-toggle"></div>`);
 
-  let login = $(`<h1>Login</h1>`);
-  let signUp = $(`<h1>Sign Up</h1>`);
-
-  toggle.append(login, signUp);
+  let login = $(`<h1 class="login">Login</h1>`);
+  let signUp = $(`<h1 class="signUp">Sign Up</h1>`);
 
   let form = $(`
     <form class="login-signup">
       <input type="text" class="name" name="name" placeholder="Name" value="">
-      <input type="text" name="email" placeholder="Email" value="">
-      <input type="text" name="password" placeholder="Password" value="">
-      <input type="submit" name="submit" value="Log In">
+      <input type="text" name="email" placeholder="Email" value="maxruss.87@gmail.com">
+      <input type="password" name="password" placeholder="Password" value="555">
     </form>`);
 
+  toggle.append(login, signUp, form);
+
+  form.append(buttonToggle.append(`<input type="submit" name="submit" class="submit" value="Register">`));
+
+  //click handling for registering different form options
   login.on('click', () => {
     $('.name').hide();
+    buttonToggle.empty();
+    buttonToggle.append(`<input type="submit" name="submit" class="submit" value="Log In">`);
     newUser = false;
   });
 
   signUp.on('click', () => {
     $('.name').show();
+    buttonToggle.empty();
+    buttonToggle.append(`<input type="submit" name="submit" class="submit" value="Register">`);
     newUser = true;
   });
 
@@ -46,6 +51,7 @@ export default function(user) {
     }
   });
 
-  return contentBox.append(toggle, form);
+  // return contentBox.append(form);
+  return toggle;
 
 }

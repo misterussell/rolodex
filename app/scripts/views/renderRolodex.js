@@ -1,18 +1,16 @@
 import $ from 'jquery';
 
-const contentBox = $('.main-content');
+import renderListItem from './renderListItem';
 
-export default function() {
+export default function(contacts, session) {
 
-  const contactList = $(`<ul class="contacts"></ul>`);
+  let contactList = $(`<ul class="contacts"></ul>`);
 
-  let listItem = $(`
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    `);
+  contacts.on('update', () => {
+    contacts.forEach( function(contact, i, arr) {
+      contactList.append(renderListItem(contact));
+    });
+  });
 
-  return contentBox.append(contactList.append(listItem));
-
+  return contactList;
 }
