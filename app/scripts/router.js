@@ -29,7 +29,7 @@ const Router = Backbone.Router.extend({
     console.log('hello father');
     contentBox.empty();
     renderRolodex();
-    renderAddContact();
+    renderAddContact(user);
   }
 });
 

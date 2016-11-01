@@ -48,9 +48,9 @@ export default Backbone.Model.extend({
         }
     });
   },
-  addContact() {
+  addContact(firstName, lastName, nickName, email, phoneNumber, address) {
     this.save(
-      {model},
+      {firstName, lastName, nickName, email, phoneNumber, address},
       {
         url: 'https://api.backendless.com/v1/data/Contacts',
         headers: {
@@ -58,6 +58,14 @@ export default Backbone.Model.extend({
           'secret-key': 'DC3DD00B-0B43-38E7-FFEB-9BD4E0B64700',
           'application-type': 'REST',
           'Content-Type': 'application/json'
+        },
+        success: (response) => {
+          console.log('Added');
+          console.log(response);
+        },
+        error: (response) => {
+          console.log('Not posted');
+          console.log(response);
         }
       }
     );
