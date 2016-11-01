@@ -2,9 +2,9 @@ import $ from 'jquery';
 
 const contentBox = $('.main-content');
 
-export default function() {
+export default function(contacts, session) {
 
-  const contactList = $(`<ul class="contacts"></ul>`);
+  let contactList = $(`<ul class="contacts"></ul>`);
 
   let listItem = $(`
     <li></li>
@@ -13,6 +13,9 @@ export default function() {
     <li></li>
     `);
 
-  return contentBox.append(contactList.append(listItem));
+  contactList.append(listItem);
+
+  // return contentBox.append(contactList.append(listItem));
+  return contactList;
 
 }
