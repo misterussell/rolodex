@@ -24,6 +24,7 @@ export default function(contacts, session) {
     let email = $(form).find('input[name="email"]').val();
     let phoneNumber = $(form).find('input[name="telephone"]').val();
     let address = $(form).find('input[name="address"]').val();
+    let Owner = session.get('ownerId');
 
     contacts.create(
       {
@@ -32,7 +33,7 @@ export default function(contacts, session) {
         nickName,
         email,
         phoneNumber,
-        address
+        address,
       },
       {
         headers: {

@@ -7,11 +7,11 @@ export default function(user, session) {
   //variable for sign up toggle
   let newUser = true;
 
-  let toggle = $(`<div></div>`);
-  let buttonToggle = $(`<div></div>`);
+  let toggle = $(`<div class="toggle"></div>`);
+  let buttonToggle = $(`<div="button-toggle"></div>`);
 
-  let login = $(`<h1>Login</h1>`);
-  let signUp = $(`<h1>Sign Up</h1>`);
+  let login = $(`<h1 class="login">Login</h1>`);
+  let signUp = $(`<h1 class="signUp">Sign Up</h1>`);
 
   let form = $(`
     <form class="login-signup">
@@ -22,20 +22,20 @@ export default function(user, session) {
 
   toggle.append(login, signUp, form);
 
-  form.append(buttonToggle.append(`<input type="submit" name="submit" value="Register">`));
+  form.append(buttonToggle.append(`<input type="submit" name="submit" class="submit" value="Register">`));
 
   //click handling for registering different form options
   login.on('click', () => {
     $('.name').hide();
     buttonToggle.empty();
-    buttonToggle.append(`<input type="submit" name="submit" value="Log In">`);
+    buttonToggle.append(`<input type="submit" name="submit" class="submit" value="Log In">`);
     newUser = false;
   });
 
   signUp.on('click', () => {
     $('.name').show();
     buttonToggle.empty();
-    buttonToggle.append(`<input type="submit" name="submit" value="Register">`);
+    buttonToggle.append(`<input type="submit" name="submit" class="submit" value="Register">`);
     newUser = true;
   });
 
