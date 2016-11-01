@@ -41,7 +41,6 @@ export default function(user) {
     let name = $(form).find('input[name="name"]').val();
     if (newUser){
       user.register(email, password, name);
-      console.log('Form submit');
     } else {
       user.login(email, password);
     }

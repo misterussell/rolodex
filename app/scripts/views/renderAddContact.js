@@ -22,8 +22,9 @@ export default function(user) {
     let lastName = $(form).find('input[name="lastName"]').val();
     let nickName = $(form).find('input[name="nickName"]').val();
     let email = $(form).find('input[name="email"]').val();
-    let phoneNumber = $(form).find('input[name="phoneNumber"]').val();
+    let phoneNumber = $(form).find('input[name="telephone"]').val();
     let address = $(form).find('input[name="address"]').val();
+    //need to pass in an owner ID
 
     user.addContact(firstName, lastName, nickName, email, phoneNumber, address);
 
