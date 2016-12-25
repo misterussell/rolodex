@@ -1,4 +1,4 @@
 docs
 .sass-cache
 node_modules
-scripts/secret.js
+scripts/config.js
