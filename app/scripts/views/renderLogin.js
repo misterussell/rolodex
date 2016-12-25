@@ -16,8 +16,8 @@ export default function(user, session) {
   let form = $(`
     <form class="login-signup">
       <input type="text" class="name" name="name" placeholder="Name" value="">
-      <input type="text" name="email" placeholder="Email" value="maxruss.87@gmail.com">
-      <input type="password" name="password" placeholder="Password" value="555">
+      <input type="text" name="email" placeholder="Email" value="">
+      <input type="password" name="password" placeholder="Password" value="">
     </form>`);
 
   toggle.append(login, signUp, form);
